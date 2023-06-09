@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import React from 'react'
+import FilmsList from './components/FilmsList'
 class App extends React.Component {
   constructor (){
     super();
@@ -30,6 +31,7 @@ class App extends React.Component {
             })}
             </ul>
         </form>
+        <FilmsList />
       </div>
     );
   }
