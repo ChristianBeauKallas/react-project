@@ -12,9 +12,17 @@ class FilmsList extends Component {
 
 getFilms(){
     fetch(`https://studioghibliapi-d6fc8.web.app/films`)
-    .then((response)=> {return response.json();})
-    .then((data) => this.setState({list: data}))
-    .catch((error) => this.setState({error: error.message}));
+    .then((response)=> {
+        return response.json();
+    })
+    .then((data) => {
+        console.log('Fetched films:', data);
+        this.setState({ list: data });
+    })
+    .catch((error) => {
+        console.log('Error fetching films:', error);
+        this.setState({ error: error.message });
+    });
 }
 
 componentDidMount(){

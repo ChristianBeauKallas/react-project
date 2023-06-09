@@ -18,7 +18,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="App">
         <h1>Hello World</h1>
         <form onSubmit = {this.onSubmit}>
           <input type="text" value = {this.state.text} 
