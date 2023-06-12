@@ -1,46 +1,24 @@
 // import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import FilmsList from './components/FilmsList';
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import { HomePage, FilmsPage } from './pages';
+import FilmsList from './components/FilmsList'
 
-function App (props) {
-  const [list, setList] = useState(["ready", "set", "GO"]);
-  const [text, setText] = useState("");
+export function HomePage () {
+const [list, setList] = useState(["ready", "set", "GO"]);
+const [text, setText] = useState("");
 
-  function handleSubmit(event){
+function handleSubmit(event){
     event.preventDefault()
 
     setList([...list, text])
-  }
+}
     return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" />
-          <Route path="films" />
-        </Routes>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="films">Films</NavLink>
-            </li>
-          </ul>
-        </nav>
-        </BrowserRouter>
-        );
-  }
-  export default App;
-
-      {/* <div className="App">
+    <div className="App">
         <h1>Hello Venus</h1>
         <form onSubmit = {handleSubmit}>
-          <input type="text" name = "text" id="text" value={text} onChange={(event) => 
+        <input type="text" name = "text" id="text" value={text} onChange={(event) => 
             setText(event.target.value)}/>
-          <button type='submit'>Add</button>
+        <button type='submit'>Add</button>
             <ul>
             {list.map((task, id)=> {
             return <li key={id}>{task}</li>
@@ -48,8 +26,9 @@ function App (props) {
             </ul>
         </form>
         <FilmsList />
-      </div> */}
-      
+    </div>
+    );
+}
 
 // function App() {
 //   return (
