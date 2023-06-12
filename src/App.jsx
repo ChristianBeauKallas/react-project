@@ -1,32 +1,26 @@
 // import logo from './logo.svg';
 import './App.css';
-import React from 'react'
+import { useState } from 'react';
 import FilmsList from './components/FilmsList'
-class App extends React.Component {
-  constructor (){
-    super();
-    this.state = {
-      list: ["ready", "set", "GO"],
-      text: "",
-    }
-    this.onSubmit = this.onSubmit.bind(this);
+
+function App () {
+  const [list, setList] = useState(["ready", "set", "GO"]);
+  const [text, setText] = useState("");
+
+  function handleSubmit(event){
+    event.preventDefault()
+
+    setList([...list, text])
   }
-    onSubmit(event) {
-      event.preventDefault()
-      let newList = [...this.state.list, this.state.text]
-      this.setState({list: newList, text: " "})
-  }
-  render() {
     return (
       <div className="App">
-        <h1>Hello World</h1>
-        <form onSubmit = {this.onSubmit}>
-          <input type="text" value = {this.state.text} 
-          onChange={(e) => this.setState({text: e.target.value})}
-          />
+        <h1>Hello Venus</h1>
+        <form onSubmit = {handleSubmit}>
+          <input type="text" name = "text" id="text" value={text} onChange={(event) => 
+            setText(event.target.value)}/>
           <button type='submit'>Add</button>
             <ul>
-            {this.state.list.map((task, id)=> {
+            {list.map((task, id)=> {
             return <li key={id}>{task}</li>
             })}
             </ul>
@@ -35,7 +29,6 @@ class App extends React.Component {
       </div>
     );
   }
-}
 
 // function App() {
 //   return (
