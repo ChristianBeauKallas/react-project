@@ -24,12 +24,12 @@ class App extends React.Component {
           onChange={(e) => this.setState({text: e.target.value})}
           />
           <button type='submit'>Add</button>
-            <ul>
+        </form>
+        <ul>
             {this.state.list.map((task, id)=> {
             return <li key={id}>{task}</li>
             })}
             </ul>
-        </form>
       </div>
     );
   }
