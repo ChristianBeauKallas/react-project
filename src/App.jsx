@@ -3,7 +3,8 @@ import './App.css';
 import { useState } from 'react';
 import FilmsList from './components/FilmsList';
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import { HomePage, FilmsPage } from './pages';
+import { HomePage } from "./pages/index";
+import { FilmsPage } from "./pages/index";
 
 function App (props) {
   const [list, setList] = useState(["ready", "set", "GO"]);
@@ -17,8 +18,8 @@ function App (props) {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" />
-          <Route path="films" />
+          <Route path="/" element={<HomePage />}/>
+          <Route path="films" element={<FilmsPage />}/>
         </Routes>
         <nav>
           <ul>
@@ -77,5 +78,3 @@ function App (props) {
 //     </div>
 //   );
 // }
-
-export default App;

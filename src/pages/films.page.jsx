@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
+import { filterFilmsByDirector, getListOf } from "../helpers/film.helpers";
 
 function FilmsPage() {
     const[list, setList] = useState([])
-    
     const [searchDirector, setSearchDirector] = useState(" ")
 
 function getFilms(){
@@ -15,14 +15,16 @@ function getFilms(){
         setList( data )
     })
     .catch((error) => {
-        console.log('Error fetching films:', error);
-        this.setState({ error: error.message });
+        console.log('Error fetching films:', error.message);
     });
 }
 
     useEffect(()=> {
         getFilms();
     }, [])
+
+    let filmsByDirector = filterFilmsByDirector(list, searchDirector)
+    let directors = getListOf(list, "director")
 
     return (
     <div>
@@ -34,14 +36,19 @@ function getFilms(){
                 name="searchDirector"
                 id="searchDirector"
                 value={searchDirector}
-                onChange={()}
+                onChange={(event) => setSearchDirector(event.target.value)}
                 >
                     <option value="">All</option>
+                    {directors.map((director, index) => {
+                    return(
+                        <option key={director+index} value={director}>{director}</option>
+                    )
+                    })}
                 </select>
             </div>
         </form>
         <ul>
-            {list.map((film) => (
+            {filmsByDirector.map((film) => (
             <li key ={film.id}>{film.title}</li>
         ))}
         </ul>
@@ -50,4 +57,4 @@ function getFilms(){
 }
 
 
-export default FilmsList;
+export default FilmsPage;

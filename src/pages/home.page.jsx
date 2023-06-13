@@ -1,9 +1,8 @@
 // import logo from './logo.svg';
-import './App.css';
 import { useState } from 'react';
-import FilmsList from './components/FilmsList'
+// import FilmsList from './components/FilmsList'
 
-export function HomePage () {
+export default function HomePage () {
 const [list, setList] = useState(["ready", "set", "GO"]);
 const [text, setText] = useState("");
 
@@ -25,7 +24,7 @@ function handleSubmit(event){
             })}
             </ul>
         </form>
-        <FilmsList />
+        {/* <FilmsList /> */}
     </div>
     );
 }
@@ -57,4 +56,4 @@ function handleSubmit(event){
 //   );
 // }
 
-export default App;
+// export default App;
