@@ -3,16 +3,16 @@ import { filterFilmsByDirector, getListOf } from "../helpers/film.helpers";
 
 function FilmsPage() {
     const[list, setList] = useState([])
-    const [searchDirector, setSearchDirector] = useState(" ")
+    const [searchDirector, setSearchDirector] = useState("")
 
 function getFilms(){
     fetch(`https://studioghibliapi-d6fc8.web.app/films`)
     .then((response)=> {
         return response.json();
     })
-    .then((data) => {
-        console.log('Fetched films:', data);
-        setList( data )
+    .then((films) => {
+        console.log('Fetched films:', films);
+        setList( films)
     })
     .catch((error) => {
         console.log('Error fetching films:', error.message);
